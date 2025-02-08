@@ -55,38 +55,24 @@ namespace FinalEFProject
             if (EmptyFields())
                 MessageBox.Show("All fields are required to be filled.","Error Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
             else
-            {
-                
-                   
-                    var userData = con.Query<Users>("select * from Users").ToList();
-                    if (userData.Count > 0) { 
-                       foreach (var item in userData)
-                       {
-                            if (txt_username.Text == item.UserName)
-                            {
+            {  
+                    string userData = con.Query<string>($"select UserName from Users where UserName ='{txt_username.Text}'").FirstOrDefault();
+                    if (userData==txt_username.Text) { 
+                       
                                  MessageBox.Show("This User Name is already taken", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                 break;
-                            }
-                            
-                       }
                     }
-                    if (txt_password.Text != txt_conPass.Text)
+                    else if (txt_password.Text != txt_conPass.Text)
                         MessageBox.Show("Password doesn't match", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else if (txt_password.Text.Length <= 8)
                         MessageBox.Show("Password should be more than 8 characters", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
-                        Users user2 = new()
-                        {
-                            UserName = txt_username.Text,
-                            Password = txt_password.Text,
-                            Role = "Employee",
-                            Status = "Active",
-                            Date_Reg = DateTime.Now,
+
+                    var addUser = con.Execute("insert into Users (UserName,Password,Role,Status,Date_Reg,Customer_Phone) values" +
+                        "(@UserName,@Password,@Role,@Status,@Date_Reg,@Customer_Phone)",new { UserName = txt_username.Text ,
+                            Password = txt_password.Text , Role = "Employee" , Status = "Active" , Date_Reg = DateTime.Now,
                             Customer_Phone = txt_phoneNumber.Text
-                        };
-                        context.Add(user2);
-                        context.SaveChanges();
+                        });
                         MessageBox.Show("Register Successfull","Information Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         txt_conPass.Text = txt_password.Text = txt_username.Text = "";
                         Form1 login = new Form1();

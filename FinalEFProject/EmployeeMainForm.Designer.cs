@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btn_logout = new Button();
             addProduct_btn = new Button();
@@ -81,6 +81,7 @@
             dataGridView1 = new DataGridView();
             dgv_empMenu = new DataGridView();
             label9 = new Label();
+            btn_backToAdmin = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -98,6 +99,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(7, 99, 102);
+            panel1.Controls.Add(btn_backToAdmin);
             panel1.Controls.Add(btn_logout);
             panel1.Controls.Add(addProduct_btn);
             panel1.Controls.Add(customers_btn);
@@ -333,14 +335,14 @@
             dgv_displayOrderData.BackgroundColor = Color.White;
             dgv_displayOrderData.BorderStyle = BorderStyle.None;
             dgv_displayOrderData.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(7, 99, 102);
-            dataGridViewCellStyle9.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dgv_displayOrderData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(7, 99, 102);
+            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgv_displayOrderData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_displayOrderData.ColumnHeadersHeight = 29;
             dgv_displayOrderData.EnableHeadersVisualStyles = false;
             dgv_displayOrderData.Location = new Point(3, 16);
@@ -623,14 +625,14 @@
             dgv_orderTable.BackgroundColor = Color.White;
             dgv_orderTable.BorderStyle = BorderStyle.None;
             dgv_orderTable.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(7, 99, 102);
-            dataGridViewCellStyle10.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
-            dgv_orderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(7, 99, 102);
+            dataGridViewCellStyle2.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgv_orderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgv_orderTable.ColumnHeadersHeight = 29;
             dgv_orderTable.EnableHeadersVisualStyles = false;
             dgv_orderTable.Location = new Point(867, 16);
@@ -649,14 +651,14 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(7, 99, 102);
-            dataGridViewCellStyle11.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(7, 99, 102);
+            dataGridViewCellStyle3.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeight = 29;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.Location = new Point(867, 16);
@@ -675,14 +677,14 @@
             dgv_empMenu.BackgroundColor = Color.White;
             dgv_empMenu.BorderStyle = BorderStyle.None;
             dgv_empMenu.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(7, 99, 102);
-            dataGridViewCellStyle12.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle12.ForeColor = Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dgv_empMenu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(7, 99, 102);
+            dataGridViewCellStyle4.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgv_empMenu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgv_empMenu.ColumnHeadersHeight = 29;
             dgv_empMenu.EnableHeadersVisualStyles = false;
             dgv_empMenu.Location = new Point(13, 57);
@@ -703,6 +705,20 @@
             label9.Size = new Size(73, 27);
             label9.TabIndex = 2;
             label9.Text = "Menu";
+            // 
+            // btn_backToAdmin
+            // 
+            btn_backToAdmin.BackColor = Color.FromArgb(7, 99, 102);
+            btn_backToAdmin.FlatStyle = FlatStyle.Flat;
+            btn_backToAdmin.Font = new Font("Arial Rounded MT Bold", 10.8F);
+            btn_backToAdmin.ForeColor = Color.White;
+            btn_backToAdmin.Location = new Point(13, 425);
+            btn_backToAdmin.Name = "btn_backToAdmin";
+            btn_backToAdmin.Size = new Size(268, 48);
+            btn_backToAdmin.TabIndex = 23;
+            btn_backToAdmin.Text = "Back";
+            btn_backToAdmin.UseVisualStyleBackColor = false;
+            btn_backToAdmin.Click += btn_backToAdmin_Click;
             // 
             // EmployeeMainForm
             // 
@@ -788,5 +804,6 @@
         private Label label_totalPrice;
         private Label label18;
         private Label label_totalPriceValue;
+        private Button btn_backToAdmin;
     }
 }

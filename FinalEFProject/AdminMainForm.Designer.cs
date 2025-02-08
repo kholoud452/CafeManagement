@@ -53,7 +53,6 @@
             btn_orderPage = new Button();
             btn_logout = new Button();
             btn_addProduct = new Button();
-            button2 = new Button();
             button1 = new Button();
             label4 = new Label();
             label3 = new Label();
@@ -317,7 +316,6 @@
             panel2.Controls.Add(btn_orderPage);
             panel2.Controls.Add(btn_logout);
             panel2.Controls.Add(btn_addProduct);
-            panel2.Controls.Add(button2);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
@@ -333,7 +331,7 @@
             btn_orderPage.FlatStyle = FlatStyle.Flat;
             btn_orderPage.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_orderPage.ForeColor = Color.White;
-            btn_orderPage.Location = new Point(12, 474);
+            btn_orderPage.Location = new Point(12, 424);
             btn_orderPage.Name = "btn_orderPage";
             btn_orderPage.Size = new Size(268, 47);
             btn_orderPage.TabIndex = 11;
@@ -359,26 +357,13 @@
             btn_addProduct.FlatStyle = FlatStyle.Flat;
             btn_addProduct.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_addProduct.ForeColor = Color.White;
-            btn_addProduct.Location = new Point(12, 412);
+            btn_addProduct.Location = new Point(12, 362);
             btn_addProduct.Name = "btn_addProduct";
             btn_addProduct.Size = new Size(268, 47);
             btn_addProduct.TabIndex = 9;
             btn_addProduct.Text = "Add Product";
             btn_addProduct.UseVisualStyleBackColor = true;
             btn_addProduct.Click += button3_Click_1;
-            // 
-            // button2
-            // 
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 359);
-            button2.Name = "button2";
-            button2.Size = new Size(268, 47);
-            button2.TabIndex = 7;
-            button2.Text = "Customers";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -509,7 +494,6 @@
         private Panel panel2;
         private Button btn_logout;
         private Button btn_addProduct;
-        private Button button2;
         private Button button1;
         private Label label4;
         private Label label3;

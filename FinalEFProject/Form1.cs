@@ -46,37 +46,31 @@ namespace FinalEFProject
             else
             {
                     
-                    var userData = con.Query<Users>("select * from Users ").ToList();
-                    if (userData.Count > 0)
+                    string userRole = con.Query<string>($"select ROle from Users where UserName ='{txt_username.Text}' and Password ='{txt_LogPassword.Text}'").FirstOrDefault();
+                    if (userRole!=null)
                     {
-                        foreach (var item in userData)
-                        {
-                            if (txt_username.Text == item.UserName && txt_LogPassword.Text == item.Password)
-                            {
-                                if(item.Role == "admin")
-                                {
-                                    AdminMainForm admin = new AdminMainForm(item.Role);
-                                    admin.Show();
-                                    this.Hide();
-                                }
-                                else if (item.Role == "Employee")
-                                {
-                                    EmployeeMainForm emp = new EmployeeMainForm(item.Role);
-                                    emp.Show();
-                                    this.Hide();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("incorrect data");
-                                }
-                            }
-                             
-
+                    if (userRole == "admin")
+                    {
+                        AdminMainForm admin = new AdminMainForm(userRole);
+                        admin.Show();
+                        this.Hide();
                     }
+                    else if (userRole == "Employee")
+                    {
+                        EmployeeMainForm emp = new EmployeeMainForm(userRole);
+                        emp.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("incorrect data");
+                    }       
                 }
-                else
-                    MessageBox.Show("Something went wrong", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("Something went wrong", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
     }
-}
+

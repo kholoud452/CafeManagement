@@ -33,9 +33,30 @@ namespace FinalEFProject
         private void EmployeeMainForm_Load(object sender, EventArgs e)
         {
             LoadDataOfMenu();
+            if(_role == "Employee")
+                btn_backToAdmin.Visible = false;
 
         }
+        void CheckCustomerPhone()
+        {
 
+            var user = _context.Users.Where(p => p.Customer_Phone == txt_cusPhone.Text && p.Role == "User").FirstOrDefault();
+            if (user != null)
+                _customerId = user.Id;
+            else _customerId = -1;
+            if (_customerId != -1)
+            {
+                GetOrderData(_customerId);
+            }
+            else
+            {
+                MessageBox.Show("This user don't exist \n Go to add user...", "Confirmation Message");
+
+               AdminMainForm form = new AdminMainForm(_role);
+                form.Show();
+                this.Hide();
+            }
+        }
 
         private void addProduct_btn_Click_1(object sender, EventArgs e)
         {
@@ -103,7 +124,7 @@ namespace FinalEFProject
                     cb_empProdID.Text = cb_empProdID.Text = label_priceMenu.Text =
                      label_menuProdName.Text = ""; nud_quantity.Value = 0;
                     MessageBox.Show("Order Added");
-                    GetOrderData();
+                    GetOrderData(_customerId);
                 }
                 catch (Exception ex)
                 {
@@ -111,45 +132,26 @@ namespace FinalEFProject
                 }
             }
         }
-        void GetOrderData()
+        
+        
+        void GetOrderData(int customerId)
         {
-            string phone = txt_cusPhone.Text;
-            var user = _context.Users.ToList();
-            if (user.Count > 0)
-            {
-                foreach (var item in user)
-                {
-                    if (item.Customer_Phone == phone && item.Role == "User")
-                        _customerId = item.Id;
-                    else _customerId = -1;
-                }
-            }
-            if (_customerId != -1)
-            {
-                var orderTable = _context.Orders.Where(o => o.UserId == _customerId).ToList();
-                dgv_displayOrderData.DataSource = orderTable;
-                dgv_displayOrderData.Columns["Id"].Visible = false;
-                dgv_displayOrderData.Columns["Order_Delete_Date"].Visible = false;
-                dgv_displayOrderData.Columns["Order_Date"].Visible = false;
-                dgv_displayOrderData.Columns["User"].Visible = false;
+            var orderTable = _context.Orders.Where(o => o.UserId == customerId).ToList();
+            dgv_displayOrderData.DataSource = orderTable;
+            dgv_displayOrderData.Columns["Id"].Visible = false;
+            dgv_displayOrderData.Columns["Order_Delete_Date"].Visible = false;
+            dgv_displayOrderData.Columns["Order_Date"].Visible = false;
+            dgv_displayOrderData.Columns["User"].Visible = false;
 
 
-                foreach (var item in orderTable)
-                {
-                    totalPrice += item.Price;
-                }
-                if (totalPrice != 0)
-                    label_totalPriceValue.Text = totalPrice.ToString();
-                else
-                    label_orderPrice.Text = "";
+            foreach (var item in orderTable)
+            {
+                totalPrice += item.Price;
             }
+            if (totalPrice != 0)
+                label_totalPriceValue.Text = totalPrice.ToString();
             else
-            {
-                MessageBox.Show("This user does not exist...\n Go to add new user...");
-                AdminMainForm form = new AdminMainForm(_role);
-                form.Show();
-                this.Hide();
-            }
+                label_orderPrice.Text = "";
         }
         private void dgv_empMenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -167,7 +169,7 @@ namespace FinalEFProject
 
         private void btn_CheckCustomerExist_Click(object sender, EventArgs e)
         {
-            GetOrderData();
+            CheckCustomerPhone();
         }
 
         private void txt_amount_TextChanged(object sender, EventArgs e)
@@ -215,8 +217,8 @@ namespace FinalEFProject
                     _context.RemoveRange(allOrderData);
                     _context.SaveChanges();
                     MessageBox.Show("Successfull Payment");
-                    GetOrderData();
-                    label_orderPrice.Text = label_totalPriceValue .Text= txt_amount.Text = label_change.Text = "";
+                    GetOrderData(_customerId);
+                    label_orderPrice.Text = label_totalPriceValue.Text = txt_amount.Text = label_change.Text = "";
 
                 }
             }
@@ -247,15 +249,22 @@ namespace FinalEFProject
 
         private void btn_delOrder_Click(object sender, EventArgs e)
         {
-            var delOrder = _context.Orders.FirstOrDefault(o=>o.Id == _orderId);
-            if(delOrder != null)
+            var delOrder = _context.Orders.FirstOrDefault(o => o.Id == _orderId);
+            if (delOrder != null)
             {
                 _context.Remove(delOrder);
                 _context.SaveChanges();
-                GetOrderData();
+                GetOrderData(_customerId);
                 txt_OrderProdID.Text = label_orderPrice.Text = "";
                 nud_orderQuantitytoPay.Value = 0;
             }
+        }
+
+        private void btn_backToAdmin_Click(object sender, EventArgs e)
+        {
+            AdminMainForm adminMainForm = new AdminMainForm(_role);
+            adminMainForm.Show();
+            this.Hide();
         }
     }
 }

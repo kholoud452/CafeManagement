@@ -49,48 +49,39 @@ namespace FinalEFProject
         }
         private void btn_adduser_Click(object sender, EventArgs e)
         {
-            
+
 
             if (EmptyFields())
                 MessageBox.Show("All fields are required to be filled.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-
-
-                var userData = con.Query<Users>("select * from Users").ToList();
-                if (userData.Count > 0)
+                string userData = con.Query<string>($"select UserName from Users where UserName ='{txt_username.Text}'").FirstOrDefault();
+                if (userData == txt_username.Text)
                 {
-                    foreach (var item in userData)
-                    {
-                        if (txt_username.Text == item.UserName)
-                        {
-                            MessageBox.Show("This User Name is already taken", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
 
-                    }
+                    MessageBox.Show("This User Name is already taken", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
-                 if (txt_password.Text.Length <= 8)
+                else if (txt_password.Text.Length <= 8)
                     MessageBox.Show("Password should be more than 8 characters", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    Users user2 = new()
-                    {
-                        UserName = txt_username.Text,
-                        Password = txt_password.Text,
-                        Role = "Employee",
-                        Status = cb_status.Text,
-                        Date_Reg = DateTime.Now,
-                        Customer_Phone = txt_phone.Text
-                    };
-                    _context.Add(user2);
-                    _context.SaveChanges();
-                    MessageBox.Show("Register Successfull", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txt_username.Text = txt_password.Text = cb_role.Text = cb_status.Text = "";
-                    DisplayUserData();
-                }
 
+                    var addUser = con.Execute("insert into Users (UserName,Password,Role,Status,Date_Reg,Customer_Phone) values" +
+                        "(@UserName,@Password,@Role,@Status,@Date_Reg,@Customer_Phone)", new
+                        {
+                            UserName = txt_username.Text,
+                            Password = txt_password.Text,
+                            Role = cb_role.Text,
+                            Status = cb_status.Text,
+                            Date_Reg = DateTime.Now,
+                            Customer_Phone = txt_phone.Text
+                        });
+                    MessageBox.Show("User added successfullyl", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txt_username.Text = txt_phone.Text = txt_password.Text = cb_role.Text = cb_status.Text = "";
+                    DisplayUserData();
+
+
+                }
             }
         }
         private void dgv_adduser_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -119,7 +110,7 @@ namespace FinalEFProject
                 _context.SaveChanges();
                 MessageBox.Show("Updated");
                 DisplayUserData();
-                txt_username.Text = txt_password.Text =txt_phone.Text= cb_role.Text = cb_status.Text = "";
+                txt_username.Text = txt_password.Text = txt_phone.Text = cb_role.Text = cb_status.Text = "";
             }
         }
 
@@ -181,11 +172,5 @@ namespace FinalEFProject
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AdminDashBoard adminDashBoard = new AdminDashBoard(_role);
-            adminDashBoard.Show();
-            this.Hide();
-        }
     }
 }

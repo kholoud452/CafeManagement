@@ -142,3 +142,4 @@ D:\Javascript\FinalEFProject\FinalEFProject\obj\Debug\net9.0-windows\FinalEFProj
 D:\Javascript\FinalEFProject\FinalEFProject\obj\Debug\net9.0-windows\FinalEFProject.AdminDashBoard.resources
 D:\Javascript\FinalEFProject\FinalEFProject\obj\Debug\net9.0-windows\FinalEFProject.EmployeeMainForm.resources
 D:\Javascript\FinalEFProject\FinalEFProject\obj\Debug\net9.0-windows\FinalEFProject.EmpCustomerForm.resources
+D:\Javascript\FinalEFProject\FinalEFProject\obj\Debug\net9.0-windows\FinalEFProject.sourcelink.json
